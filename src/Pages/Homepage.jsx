@@ -7,9 +7,8 @@ export default function Homepage({ articles }) {
 
     return (
         <>
-        <NavBar />
         <Header HeaderText={'NC News FE'}/>
-        <Button buttonText={'View All Articles'} linkTo={'/allArticles'} />
+        <Button buttonText={'View All Articles'} linkTo={'/articles'} />
         </>
     )
 }
