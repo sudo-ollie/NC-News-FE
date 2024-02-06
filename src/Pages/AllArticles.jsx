@@ -6,7 +6,6 @@ import NavBar from "../Components/NavBar";
 export default function ArticlesCards({ articles }) {
   return (
     <>
-      <NavBar />
       <Header headerText={"Displaying All Articles"} />
       <ArticleMap articles={articles} />
     </>

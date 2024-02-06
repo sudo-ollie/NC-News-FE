@@ -1,0 +1,12 @@
+
+
+#CommentContainer {
+  background-color: rgb(181, 178, 142);
+  color: black;
+  border-radius: 10px;
+}
+
+#CommentContainer div {
+  border-bottom: 2px dotted black;
+  font-weight: bold;
+}
