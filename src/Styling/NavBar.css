@@ -1,0 +1,13 @@
+#NavBarContainer {
+    align-items: centre;
+    display: flex;
+}
+
+#NavBarContainer ul {
+    list-style-type: none;
+    display: flex;
+}
+
+#NavBarContainer li {
+    margin: 1rem;
+}

@@ -1,24 +1,29 @@
-.ArticleCard {
-    background-color: palegoldenrod;
-    margin: 10px;
-    color: black;
-    border: 3px solid black;
-    border-radius: 10px;
-    text-align: left;
+#ArticleCard {
+    background-color: palegreen;
+    max-width: 37.5rem;
+    max-height: 21.875rem;
+    margin-bottom: 20px;
+
 }
 
-.ArticleCard img {
-    width: 250px;
-    height: 200px;
-    text-align: left;
-    border-radius: 10px;
-    margin-left: 50px;
-    border: 3px solid black;
-    box-shadow: 0px 0px 40px 3px black;
+.ArticleCardInside {
+    max-width: 37.5rem;
+    max-height: 21.875rem;
+    width: 100%;
+    height: 100%;
 }
 
-.ArticleCard .TopicAndAuthor {
+.ArticleCardInside #articleCardImg {
+    max-width: 18.75rem;
+    width: 100%;
+    max-height: 12.5rem;
+    height: 100%;
+}
+
+#articleCardTitle {
     color: black;
-    margin-left: 20px;
-    display: inline-block;
+}
+
+.TopicAndAuthor {
+    color: black;
 }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-export default function Button({ buttonText }) {
+export default function Button({ buttonText , linkTo }) {
 
     return (
-        <Link to='/allArticles'>
+        <Link to={linkTo}>
             <button>{buttonText}</button>
         </Link>
 
