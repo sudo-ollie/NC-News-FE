@@ -7,19 +7,21 @@ import { useParams } from "react-router-dom";
 
 export default function SingleArticle() {
   const [vote, setVote] = useState(0);
-  const [localVote , setLocalVote] = useState(vote)
+  const [voted , setVoted] = useState(false)
+  const [localVote , setLocalVote] = useState(0)
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState({});
   const [voteSuccess, setVoteSuccess] = useState(undefined);
   const { article_id } = useParams();
-
 
   useEffect(() => {
     if (article_id) {
       getArticle(article_id).then((response) => {
         setArticle(response);
         setVote(response.votes);
+        setLocalVote(response.votes)
         setLoading(false);
+        setVoted(false)
       });
     }
   }, [article_id]);
@@ -27,19 +29,24 @@ export default function SingleArticle() {
 
 
   const onClick = (article_id, param) => (event) => {
+    console.log(voted , 'Voted')
+    if(!voted){
     setLocalVote((currentVotes) => {
       return currentVotes + Number(param);
     });
-    editVotes(article_id, { inc_votes: param }).then((response) => {
+    setVoted(true)
+    console.log(localVote , 'Local Vote')
+      editVotes(article_id, { inc_votes: param }).then((response) => {
       if (response.status === 200) {
         setVote(response.data.updated_article.votes);
-        document.getElementById("Up").disabled = true;
-        document.getElementById("Down").disabled = true;
+        console.log(vote , 'Vote')
         setVoteSuccess(true);
       } else {
+        setVoted(false)
         setVoteSuccess(false);
       }
     });
+  }
   };
 
   return (

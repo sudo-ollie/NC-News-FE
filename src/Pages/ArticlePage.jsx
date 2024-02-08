@@ -7,6 +7,7 @@ import SingleArticle from "../Components/SingleArticle";
 
 export default function ArticlePage() {
   const [article, setArticle] = useState("");
+  const [loading , setLoading] = useState(true)
 
   const { article_id } = useParams();
 
@@ -14,6 +15,7 @@ export default function ArticlePage() {
     getArticle(article_id)
       .then((response) => {
         setArticle(response);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
@@ -22,7 +24,7 @@ export default function ArticlePage() {
 
   return (
     <>
-      <Header HeaderText={`${article.title}`} />
+      {loading ? (<Header HeaderText={`Loading...`}/>) : (<Header HeaderText={`${article.title}`}/>)}
       <SingleArticle article={article} />
     </>
   );
