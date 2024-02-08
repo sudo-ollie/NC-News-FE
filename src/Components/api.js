@@ -59,3 +59,15 @@ export const postComment = (article_id , reqbody) => {
         })
     }
 }
+
+export const deleteComment = (comment_id) => {
+    console.log(comment_id , 'CI')
+    return axios
+        .delete(`https://nc-news-project-l3od.onrender.com/api/comments/${comment_id}`)
+        .then((response) => {
+            return response
+        })
+        .catch((err) => {
+            console.log(err , 'ERROR')
+        })
+}

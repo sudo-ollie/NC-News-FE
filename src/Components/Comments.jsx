@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments } from "./api";
-import Button from './Button';
+import DeleteButton from './DeleteButton'
 import "../Styling/Accordion.css";
 import { postComment } from "./api";
 
@@ -10,6 +10,9 @@ export default function Comments({ article_id }) {
   const [newComment , setNewComment] = useState('')
   const [buttonDisabled , setButtonDisabled] = useState(false)
   const [commentSuccess , setCommentSuccess] = useState('')
+
+  //This will be changed once I have added profiles & context
+  const [userName , setUserName] = useState('tickle122')
 
   useEffect(() => {
     if(article_id){
@@ -25,7 +28,6 @@ export default function Comments({ article_id }) {
 
 
   useEffect(() => {
-    console.log(comments)
   } , [comments])
 
   const expandAccordion = () => {
@@ -39,9 +41,8 @@ export default function Comments({ article_id }) {
 
   const handleNewCommentSubmit = (event) => {
     event.preventDefault()
-    postComment(article_id , {username : 'tickle122' , body: newComment})
+    postComment(article_id , {username : userName , body: newComment})
     .then((response) => {
-      console.log(response , response.status , 'HERE')
       if(response.status === 200){
       setTimeout(() => {
         setButtonDisabled(true)
@@ -88,7 +89,7 @@ export default function Comments({ article_id }) {
                     required
                     ></textarea>
                     <button id="CommentButton" disabled={buttonDisabled} onClick={handleNewCommentSubmit}>Post</button>
-                    {commentSuccess ? (<h2>Comment posted</h2>) : (<h2>Comment Failed , retry in 15s</h2>)} 
+                    {commentSuccess === '' ? null : commentSuccess ? (<h2>Comment posted</h2>) : (<h2>Comment Failed , retry in 15s</h2>)} 
                     </div>
             </div>
             {comments && comments.map((comment , index) => (
@@ -104,6 +105,7 @@ export default function Comments({ article_id }) {
                     <p>
                         {comment.body}
                     </p>
+                    {userName === comment.author ? (<DeleteButton onClick={(e) => e.preventDefault()} article_id={article_id} buttonText={'Delete Comment'} comment_id={comment.comment_id} comments={comments} setComments={setComments} />) : (null)}
                 </div>
                 </>
             ))}
