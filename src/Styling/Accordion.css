@@ -1,4 +1,15 @@
 
+#NewCommentContainer {
+  background-color: rgb(181, 178, 142);
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#NewCommentContainer div {
+  border-bottom: 2px dotted black;
+  font-weight: bold;
+}
 
 #CommentContainer {
   background-color: rgb(181, 178, 142);
@@ -9,4 +20,18 @@
 #CommentContainer div {
   border-bottom: 2px dotted black;
   font-weight: bold;
+}
+
+#CommentContainer li {
+  align-items: center;
+  list-style-type: none;
+  display: inline;
+  margin-left: 2rem;
+}
+
+#NewCommentContainer li {
+  align-items: center;
+  list-style-type: none;
+  display: inline;
+  margin-left: 2rem;
 }

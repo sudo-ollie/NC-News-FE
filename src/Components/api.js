@@ -16,7 +16,6 @@ export const getArticle = (article_id) => {
     return axios
     .get(`https://nc-news-project-l3od.onrender.com/api/articles/${article_id}`)
     .then((response) => {
-        console.log(response , 'GET ARTICLE')
         return response.data.article
     })
     .catch((err) => {
@@ -39,10 +38,24 @@ export const editVotes = (article_id , reqbody) => {
     return axios
     .patch(`https://nc-news-project-l3od.onrender.com/api/articles/${article_id}` , reqbody)
     .then((response) => {
-        console.log(response , 'EDIT VOTE')
         return response
     })
     .catch((err) => {
         console.log(err , 'ERROR')
     })
+}
+
+export const postComment = (article_id , reqbody) => {
+    console.log('IN')
+    if(reqbody){
+        return axios
+        .post(`https://nc-news-project-l3od.onrender.com/api/articles/${article_id}/comments` , reqbody)
+        .then((response) => {
+            console.log(response , 'DATA')
+            return response
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 }
