@@ -1,0 +1,12 @@
+button img {
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
+#Down {
+    background-color: red;
+}
+
+#Up {
+    background-color: green;
+}

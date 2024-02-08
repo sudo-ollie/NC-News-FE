@@ -8,13 +8,15 @@ export default function Comments({ article_id }) {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    getComments(article_id)
+    if(article_id){
+      getComments(article_id)
       .then((response) => {
         setComments(response);
       })
       .catch((err) => {
         console.log(err);
       });
+    }
   }, [article_id]);
 
   const expandAccordion = () => {
