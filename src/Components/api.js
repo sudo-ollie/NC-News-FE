@@ -1,14 +1,26 @@
 import axios from "axios";
 
-export const getArticles = () => {
-  return axios
-    .get("https://nc-news-project-l3od.onrender.com/api/articles")
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+export const getArticles = (topic) => {
+    if(topic !== undefined){
+        return axios
+        .get(`https://nc-news-project-l3od.onrender.com/api/articles${topic}`)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    else if(topic === undefined){
+        return axios
+        .get(`https://nc-news-project-l3od.onrender.com/api/articles`)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 };
 
 
@@ -46,12 +58,10 @@ export const editVotes = (article_id , reqbody) => {
 }
 
 export const postComment = (article_id , reqbody) => {
-    console.log('IN')
     if(reqbody){
         return axios
         .post(`https://nc-news-project-l3od.onrender.com/api/articles/${article_id}/comments` , reqbody)
         .then((response) => {
-            console.log(response , 'DATA')
             return response
         })
         .catch((err) => {
@@ -61,11 +71,21 @@ export const postComment = (article_id , reqbody) => {
 }
 
 export const deleteComment = (comment_id) => {
-    console.log(comment_id , 'CI')
     return axios
         .delete(`https://nc-news-project-l3od.onrender.com/api/comments/${comment_id}`)
         .then((response) => {
             return response
+        })
+        .catch((err) => {
+            console.log(err , 'ERROR')
+        })
+}
+
+export const getTopics = () => {
+    return axios
+        .get(`https://nc-news-project-l3od.onrender.com/api/topics`)
+        .then((response) => {
+            return response.data
         })
         .catch((err) => {
             console.log(err , 'ERROR')
