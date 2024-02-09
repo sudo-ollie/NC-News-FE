@@ -15,7 +15,7 @@ export default function ArticlesCards({ articles }) {
         <h2>Loading...</h2>
       ) : (
         <>
-          {loading ? (<Header HeaderText={`Loading...`}/>) : (<Header HeaderText={`${article.title}`}/>)}
+          {loading ? (<Header HeaderText={`Loading...`}/>) : (<Header HeaderText={'All Articles'}/>)}
           <ArticleMap articles={articles} loading={loading} />
         </>
       )}
