@@ -7,7 +7,6 @@ export default function ArticleMap({ articles, loading }) {
 
   const handleRedirect = (event, article_id) => {
     event.preventDefault();
-    console.log("AID", article_id);
     navigate(`/articles/${article_id}`);
   };
 

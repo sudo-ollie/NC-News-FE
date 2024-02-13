@@ -1,9 +1,9 @@
 import Header from "../Components/Header";
-import NavBar from "../Components/NavBar";
 import { getArticle } from "../Components/api";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SingleArticle from "../Components/SingleArticle";
+import SortBar from "../Components/SortBar";
 
 export default function ArticlePage() {
   const [article, setArticle] = useState("");

@@ -2,7 +2,7 @@ import Header from '../Components/Header'
 import '../Styling/ArticleCard.css'
 import Button from '../Components/Button'
 
-export default function Homepage({ articles }) {
+export default function Homepage() {
 
     return (
         <>

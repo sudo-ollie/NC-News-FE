@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import TopicSelector from './TopicSelector';
 
 export default function NavBar() {
+  
   return (
     <>
     <div id="NavBarContainer">
