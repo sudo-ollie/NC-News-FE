@@ -1,0 +1,21 @@
+#SortBarContainer {
+    align-items: centre;
+    display: flex;
+}
+
+#SortBarContainer ul {
+    list-style-type: none;
+    display: flex;
+}
+
+#SortBarContainer #DropDown {
+    margin-left: 0.5rem;
+}
+
+#SortBarContainer #DropDown2 {
+    margin-left: 0.1rem;
+}
+
+#SortBarContainer li {
+    margin: 1rem;
+}

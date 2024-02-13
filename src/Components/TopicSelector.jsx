@@ -4,10 +4,11 @@ import { getTopics } from "./api";
 
 export default function TopicSelector() {
   const navigate = useNavigate();
-  const [loading , setLoading] = useState(true)
+  const [loading , setLoading] = useState('')
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
+    setLoading(true)
     getTopics()
       .then((response) => {
         setTopics(response.topics);
@@ -29,14 +30,10 @@ export default function TopicSelector() {
 
   return (
     <>
-      <select
-        onChange={(e) => handleSelection(e)}
-        name="Topics"
-        id="TopicSelector"
-      >
+      <select onChange={(e) => handleSelection(e)} name="Topics" id="TopicSelector">
         {!loading ? (
           <>
-            <option value="">Select Topic</option>
+            <option value="" disabled>Select Topic</option>
             {topics.map((element, index) => (
               <option value={element.slug} key={index}>
                 {element.slug}

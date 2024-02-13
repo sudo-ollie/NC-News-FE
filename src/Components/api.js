@@ -1,17 +1,8 @@
 import axios from "axios";
 
 export const getArticles = (topic) => {
-    if(topic !== undefined){
-        return axios
-        .get(`https://nc-news-project-l3od.onrender.com/api/articles${topic}`)
-        .then((response) => {
-          return response.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    else if(topic === undefined){
+    console.log(topic , 'TOPIC IN API')
+    if(topic === undefined){
         return axios
         .get(`https://nc-news-project-l3od.onrender.com/api/articles`)
         .then((response) => {
@@ -21,8 +12,17 @@ export const getArticles = (topic) => {
           console.log(err);
         });
     }
+    else if(topic !== undefined){
+        return axios
+        .get(`https://nc-news-project-l3od.onrender.com/api/articles${topic}`)
+        .then((response) => {
+          return response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 };
-
 
 export const getArticle = (article_id) => {
     return axios

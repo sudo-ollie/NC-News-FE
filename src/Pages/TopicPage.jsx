@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getArticles } from "./api";
-import Header from "./Header";
-import ArticleMap from './ArticleMap'
+import { getArticles } from "../Components/api";
+import Header from "../Components/Header";
+import ArticleMap from '../Components/ArticleMap'
+import SortBar from "../Components/SortBar";
 
 export default function TopicPage() {
   const { topic } = useParams();
@@ -18,6 +19,10 @@ export default function TopicPage() {
     }
   }, [topic]);
 
+  useEffect(() => {
+    console.log('ARTICLES HAVE CHANGED')
+  } , [articles])
+
   return (
     <>
       {loading ? (
@@ -25,6 +30,7 @@ export default function TopicPage() {
       ) : (
         <>
           <Header HeaderText={`${topic} articles`} />
+          <SortBar topic={topic} setArticles={setArticles}/>
           <ArticleMap articles={articles} loading={loading} />
         </>
       )}
